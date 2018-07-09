@@ -70,7 +70,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new CleanWebpackPlugin([config.path]),
-    new ManifestPlugin(),
+    new ManifestPlugin({ publicPath: '' }),
     new MiniCssExtractPlugin({
       filename: serve ? '[name].[hash].css' : '[name].[contenthash].css',
     }),
