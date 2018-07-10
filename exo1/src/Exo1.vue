@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import salmon_png from '@/assets/salmon.png';
-import tuna_png from '@/assets/tuna.png';
-import maki_png from '@/assets/maki.png';
+import salmon_png from './assets/salmon.png';
+import tuna_png from './assets/tuna.png';
+import maki_png from './assets/maki.png';
 
 export default {
   name: 'exo1',
@@ -32,7 +32,7 @@ export default {
         };
       },
     },
-    menu_items_prop: {
+    items: {
       type: Array,
       default: () => [
         {
@@ -66,7 +66,7 @@ export default {
 
   computed: {
     menu_items() {
-      return this.menu_items_prop.map(i => {
+      return this.items.map(i => {
         i.price *= this.options.discount;
         return i;
       });
