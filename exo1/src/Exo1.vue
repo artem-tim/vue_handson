@@ -23,6 +23,40 @@ import maki_png from '@/assets/maki.png';
 export default {
   name: 'exo1',
 
+  props: {
+    options: {
+      type: Object,
+      default: () => {
+      }
+    },
+    menu_items_prop: {
+      type: Array,
+      default: () => [
+        {
+          name: 'Salmon',
+          image_src: salmon_png,
+          price: 100,
+          description: 'Basic but delicious salmon!',
+          count: 3,
+        },
+        {
+          name: 'Tuna',
+          image_src: tuna_png,
+          price: 130,
+          description: 'Fresh sumptuous tuna!',
+          count: 5,
+        },
+        {
+          name: 'Maki',
+          image_src: maki_png,
+          price: 150,
+          description: "Children's favourite roll!",
+          count: 3,
+        },
+      ],
+    },
+  },
+
   data() {
     return {
       items: [
@@ -52,6 +86,12 @@ export default {
   },
 
   computed: {
+    menu_items() {
+      return this.menu_items_prop.map(i => {
+        i.price *= this.options.discount;
+        return i;
+      });
+    },
     menu_size() {
       return this.items.filter(i => i.count > 0).length;
     },

@@ -1,12 +1,19 @@
 <template>
-<div>
+<div class="menu_item">
+  Test
+  <main-list></main-list>
 </div>
 </template>
 
 <script>
-import Exo1 from 'exo1';
+import MainList from 'exo1';
+
 export default {
   name: 'exo2',
+
+  components: {
+    MainList,
+  },
 
   data() {
     return {
@@ -17,7 +24,4 @@ export default {
 </script>
 
 <style scoped>
-p {
-  color: #f55;
-}
 </style>
