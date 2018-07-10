@@ -2,7 +2,7 @@
 <div>
   <h2>Menu ({{ menu_size }})</h2>
   <div class="menu_list">
-    <div v-for="(item, index) in items " :key="index" :class="['menu_item', {'unavailable': item.count < 1}]">
+    <div v-for="(item, index) in menu_items " :key="index" :class="['menu_item', {'unavailable': item.count < 1}]">
       <h3>{{ item.name }}</h3>
       <p class="desc">{{ item.description }}</p>
       <p class="price">¥{{item.price}}</p>
@@ -27,7 +27,10 @@ export default {
     options: {
       type: Object,
       default: () => {
-      }
+        return {
+          discount: 1.0,
+        };
+      },
     },
     menu_items_prop: {
       type: Array,
@@ -58,31 +61,7 @@ export default {
   },
 
   data() {
-    return {
-      items: [
-        {
-          name: 'Salmon',
-          image_src: salmon_png,
-          price: 100,
-          description: 'Basic but delicious salmon!',
-          count: 3,
-        },
-        {
-          name: 'Tuna',
-          image_src: tuna_png,
-          price: 130,
-          description: 'Fresh sumptuous tuna!',
-          count: 5,
-        },
-        {
-          name: 'Maki',
-          image_src: maki_png,
-          price: 150,
-          description: "Children's favourite roll!",
-          count: 3,
-        },
-      ],
-    };
+    return {};
   },
 
   computed: {
@@ -93,7 +72,7 @@ export default {
       });
     },
     menu_size() {
-      return this.items.filter(i => i.count > 0).length;
+      return this.menu_items.filter(i => i.count > 0).length;
     },
   },
 
